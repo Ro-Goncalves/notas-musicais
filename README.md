@@ -18,8 +18,11 @@
 
 ## Comandos Impostantes
 
-- `poetry shell`: ativa o ambiente virtual
-- `mkdocs serve`: sobe um servidor web com as documentações
+- `poetry shell` : ativa o ambiente virtual
+- `mkdocs serve` : sobe um servidor web com as documentações
+- `blue --check --diff .` : verifica o code stily do projeto
+- `isort --check --diff .` : checa se os imports estão organizados
+- `task -l` : retorna as tasks configuradas no taskipy
 
 ## Configurando MKDOCS
 
@@ -44,4 +47,41 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css # Inclui um CSS no doc
+```
+
+## Configurando Pytest
+
+Essas configurações devem ser realizadas no arquivo pyproject.toml, de inicio é simples
+
+```toml
+[tool.pytest.ini_options]
+pythonpath = "." #Caminho do projeto
+addopts = "--doctest-modules" #Lê as docstrings
+```
+
+## Configurando linters
+
+Estamos de bem com o **blue**, só precisamos fazer alguns poucos ajustes no **isort**
+
+```toml
+[tool.isort]
+profile = "black" # Ajusta o padrão de identação, deixando igual a do blue
+line_length =  79 # Quantidade máxima de caracteres por linha, deixando igual a do blue
+```
+
+## Configurando automações
+
+Esse é um pouco chatinho, mas contém coisas bem legais.
+
+```toml
+[tool.taskipy.tasks]
+lint = "blue --check --diff . && isort --check --diff ." # permite usar task lint e executar o comando
+docs = "mkdocs serve" # Gera a documentação
+pre_test = "task lint" # Antes da task test executa o comando
+test = "pytest -s -x --cov=notas_musicais -vv" # Task de teste 
+                                               # s para permitir a saída de logs e prints durante a execução dos testes; 
+                                               # -x para interromper a execução dos testes assim que um deles falhar; 
+                                               # --cov=notas_musicais para gerar a cobertura de código da biblioteca;
+                                               # -vv para exibir os resultados de cada teste de forma detalhada.
+post_test = "coverage html" # Após a task test executa o comando
 ```
