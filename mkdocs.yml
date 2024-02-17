@@ -1,0 +1,16 @@
+site_name: Notas Musicais #Configura o nome do projeto
+repo_url: https://github.com/Ro-Goncalves/notas-musicais # Link do repositório
+repo_name: ro-goncalves/notas-musicais # Nome do repositório
+edit_uri: tree/master/docs # Caminho da documentação
+
+theme:  
+  name: material # Configura o nome do tema  
+  language: pt-BR # Configura o idioma
+  logo: assets/logo.png # Configura o logo
+  favicon: assets/logo.png # Configura o favicon
+
+markdown_extensions:
+  - attr_list # Permite colocar atributos no markdown, exemplo ![logo-projeto](assets/logo.png){width="300"}
+
+extra_css:
+  - stylesheets/extra.css # Inclui um CSS no doc
