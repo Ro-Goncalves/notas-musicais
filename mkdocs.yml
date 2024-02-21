@@ -14,3 +14,9 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css # Inclui um CSS no doc
+
+plugins:
+  mkdocstrings:
+    handlers:
+      python:
+        paths: [notas_musicais]
