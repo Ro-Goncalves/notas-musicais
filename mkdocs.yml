@@ -15,6 +15,9 @@ markdown_extensions:
 extra_css:
   - stylesheets/extra.css # Inclui um CSS no doc
 
+watch:
+  - notas_musicais # Toda vez que atualizar o arquivo, sobe a atualização
+
 plugins:
   mkdocstrings:
     handlers:
