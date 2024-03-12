@@ -3,7 +3,7 @@
 ## Configurando o ambiente
 
 - **instalar o pipx** `pip install pipx`
-- **instalr o poetry** `pipx install poetry`
+- **instalar o poetry** `pipx install poetry`
 - **criar novo projeto com poetry** `poetry new [nome-projeto]`
 - **ferramenta que cria o gitignore** `pipx install ignr`
 - **criar .gitignore de python** `ignr -p python > .gitignore`
@@ -15,6 +15,8 @@
 - **ferramenta para criar doc string** `poetry add --group doc mkdocstrings`
 - **ferramenta para criar doc string de python** `poetry add --group doc mkdocstrings-python`
 - **ferramenta para automação de tarefas** `poetry add --group dev taskipy`
+- **ferramenta para criar macros na documentação** `poetry add --group doc mkdocs-macros-plugin`
+- **ferramenta para colocar uma variável dentro do arquivo** `poetry add --group doc jinja2`
 
 ## Comandos Impostantes
 
@@ -47,6 +49,15 @@ markdown_extensions:
 
 extra_css:
   - stylesheets/extra.css # Inclui um CSS no doc
+
+watch:
+  - notas_musicais # Toda vez que atualizar o arquivo, sobe a atualização
+
+plugins:
+  mkdocstrings:
+    handlers:
+      python:
+        paths: [notas_musicais]
 ```
 
 ## Configurando Pytest
@@ -74,6 +85,9 @@ line_length =  79 # Quantidade máxima de caracteres por linha, deixando igual a
 Esse é um pouco chatinho, mas contém coisas bem legais.
 
 ```toml
+[tool.poetry.scripts] # Para executar o CLI usando notas-musicais
+notas-musicais = "notas_musicais.cli:app"
+
 [tool.taskipy.tasks]
 lint = "blue --check --diff . && isort --check --diff ." # permite usar task lint e executar o comando
 docs = "mkdocs serve" # Gera a documentação
