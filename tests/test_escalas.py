@@ -16,7 +16,7 @@ def test_deve_retornar_um_erro_dizendo_que_a_nota_nao_existe():
     tonica = 'X'
     tonalidade = 'maior'
 
-    mensagem_erro = f'Essa nota não exite, tente uma dessas {NOTAS}'
+    mensagem_erro = f'Essa nota não existe, tente uma dessas {NOTAS}'
 
     with raises(ValueError) as error:
         escala(tonica, tonalidade)
@@ -29,8 +29,8 @@ def test_deve_retornar_um_erro_dizendo_que_a_escala_nao_existe():
     tonalidade = 'tonalidade'
 
     mensagem_erro = (
-        f'Essa escala não existe ou não foi implementada, '
-        f'tente uma dessas {list(ESCALAS.keys())}'
+        f'Essa escala não existe ou não foi implementada. '
+        f'Tente uma dessas {list(ESCALAS.keys())}'
     )
 
     with raises(KeyError) as error:
