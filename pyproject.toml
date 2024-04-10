@@ -5,6 +5,18 @@ description = ""
 authors = ["Rodrigo Gonçalves <ro.go.calves@gmail.com>"]
 readme = "README.md"
 packages = [{include = "notas_musicais"}]
+classifiers = [
+    "Topic :: education",
+    "Environment :: Console",
+    "Natural Language :: Portuguese (Brazilian)",
+    "Development Status :: 5 - Production/Stable",
+    "Programing Language :: Python :: 3.10",
+]
+
+[tool.poetry.urls]
+"Documentação" = "https://ro-goncalves-notas-musicais.readthedocs.io/pt_BR/latest/"
+"Código" = "https://github.com/Ro-Goncalves/notas-musicais"
+"Bug Tracker" = "https://github.com/Ro-Goncalves/notas-musicais/issues"
 
 [tool.poetry.scripts]
 notas-musicais = "notas_musicais.cli:app"
